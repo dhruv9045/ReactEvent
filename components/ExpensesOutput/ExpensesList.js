@@ -7,6 +7,7 @@ const renderItem = ({ item }) => {
       date={item.date}
       description={item.description}
       amount={item.amount}
+      id={item.id}
     />
   );
 };
