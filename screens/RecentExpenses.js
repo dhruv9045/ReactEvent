@@ -13,7 +13,11 @@ function RecentExpenses() {
   });
   return (
     <View style={styles.rootContainer}>
-      <ExpensesOutput expensesPeriod="Last 7 Days" expenses={recentExpenses} />
+      <ExpensesOutput
+        expensesPeriod="Last 7 Days"
+        expenses={recentExpenses}
+        fallbackText="No expenses register for the last 7 days."
+      />
     </View>
   );
 }
