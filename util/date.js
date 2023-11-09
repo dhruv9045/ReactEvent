@@ -15,3 +15,7 @@ export function getFormattedDate(strDate) {
   date = yyyy + "-" + mm + "-" + dd;
   return date.toString();
 }
+
+export function getDateMinusDays(date, days) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate() - days);
+}
