@@ -1,13 +1,14 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import ExpensesOutput from "../components/ExpensesOutput/ExpensesOutput";
 import { useContext, useEffect, useState } from "react";
 import { ExpensesContext } from "../store/expenses-context";
 import { getDateMinusDays } from "../util/date";
 import { fetchExpense } from "../util/http";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
+import { GlobalStyles } from "../constants/style";
 
 function RecentExpenses() {
-  const [isFetching, setIsFetching] = useState();
+  const [isFetching, setIsFetching] = useState(false);
   const expenseCtx = useContext(ExpensesContext);
 
   // const [fetchExpenses, setFetchExpenses] = useState([]);
@@ -31,20 +32,21 @@ function RecentExpenses() {
     return expense.date > date7DaysAgo;
   });
   return (
-    <View style={styles.rootContainer}>
-      <ExpensesOutput
-        expensesPeriod="Last 7 Days"
-        expenses={recentExpenses}
-        fallbackText="No expenses register for the last 7 days."
-      />
-    </View>
+    <ExpensesOutput
+      expensesPeriod="Last 7 Days"
+      expenses={recentExpenses}
+      fallbackText="No expenses register for the last 7 days."
+    />
   );
 }
 
 export default RecentExpenses;
-
-const styles = StyleSheet.create({
-  rootContainer: {
-    flex: 1,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     padding: 24,
+//     backgroundColor: GlobalStyles.colors.primary700,
+//   },
+// });
